@@ -80,7 +80,7 @@ If you use the work released here for your research, please cite this paper:
 ```
 @inproceedings{terzic2025sdssm,
     Author = {Terzić, Aleksandar and Hersche, Michael and Camposampiero, Giacomo and Hofmann, Thomas and Sebastian, Abu and Rahimi, Abbas },
-    Booktitle = {Association for the Advancement of Artificial Intellgence (AAAI)},
+    Booktitle = {Association for the Advancement of Artificial Intelligence (AAAI)},
     Title = {On the Expressiveness and Length Generalization of Selective State-Space Models on Regular Languages},
     Year = {2025}}
 ```
