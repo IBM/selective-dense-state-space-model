@@ -22,7 +22,7 @@ from selective_dense_state_space_model.experiments import training
 
 _EXPERIMENT_DIR = flags.DEFINE_string(
   'experiment_dir',
-  default='/dccstor/saentis/ate/reproducing_results',
+  default='results',
   help='Directory for storing results'
 )
 
