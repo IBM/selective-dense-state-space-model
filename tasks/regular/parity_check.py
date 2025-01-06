@@ -7,7 +7,7 @@
 
 import torch as t
 import torch.nn.functional as F
-from State_Tracking_With_NNs.tasks import task
+from selective_dense_state_space_model.tasks import task
 
 class ParityCheck(task.GeneralizationTask):
 

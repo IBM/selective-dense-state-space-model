@@ -11,7 +11,7 @@ import itertools
 import math
 from sympy.combinatorics.permutations import Permutation
 
-from State_Tracking_With_NNs.tasks import task
+from selective_dense_state_space_model.tasks import task
 
 class A5Navigation(task.GeneralizationTask):
   """
@@ -34,7 +34,6 @@ class A5Navigation(task.GeneralizationTask):
     Get states
     """
     self.state_label_map = {}
-
 
     state_encode_temp = lambda state: ''.join([str(int(each)) for each in state])
 
@@ -66,10 +65,8 @@ class A5Navigation(task.GeneralizationTask):
       curr_state = state[b, :]
       state_str = ''
 
-      for el in curr_state:
-        
+      for el in curr_state:        
         state_str += str(int(el))
-
 
       state_encoding.append(state_str)
              

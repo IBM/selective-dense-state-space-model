@@ -16,7 +16,6 @@ import random
 
 import numpy as np
 
-
 class Curriculum(abc.ABC):
   """Curriculum to sample lengths."""
 

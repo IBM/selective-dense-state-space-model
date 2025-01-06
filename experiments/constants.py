@@ -3,34 +3,33 @@
 # SPDX-License-Identifier: Apache2.0
 #
 
-"""Constants for our length generalization experiments."""
-
-import functools
-from State_Tracking_With_NNs.experiments import curriculum as curriculum_lib
+"""
+Constants for our length generalization experiments.
+"""
+from selective_dense_state_space_model.experiments import curriculum as curriculum_lib
 
 """
 Modules
 """
-from State_Tracking_With_NNs.models import rnn
-from State_Tracking_With_NNs.models import lstm
-from State_Tracking_With_NNs.models import SDSSM
-from State_Tracking_With_NNs.models import SDSSM_nonlinear
-from State_Tracking_With_NNs.models import complex_diagonal_no_B_linear
-from State_Tracking_With_NNs.models import complex_diagonal_no_B_nonlinear
-from State_Tracking_With_NNs.models import complex_diagonal_with_B_linear
-from State_Tracking_With_NNs.models import complex_diagonal_with_B_nonlinear_multilayer
-
+from selective_dense_state_space_model.models import rnn
+from selective_dense_state_space_model.models import lstm
+from selective_dense_state_space_model.models import SDSSM
+from selective_dense_state_space_model.models import SDSSM_nonlinear
+from selective_dense_state_space_model.models import complex_diagonal_no_B_linear
+from selective_dense_state_space_model.models import complex_diagonal_no_B_nonlinear
+from selective_dense_state_space_model.models import complex_diagonal_with_B_linear
+from selective_dense_state_space_model.models import complex_diagonal_with_B_nonlinear_multilayer
 
 """
 Tasks
 """
-from State_Tracking_With_NNs.tasks.regular import cycle_navigation
-from State_Tracking_With_NNs.tasks.regular import even_pairs
-from State_Tracking_With_NNs.tasks.regular import modular_arithmetic
-from State_Tracking_With_NNs.tasks.regular import parity_check
-from State_Tracking_With_NNs.tasks.regular import C_2_n
-from State_Tracking_With_NNs.tasks.regular import A5
-from State_Tracking_With_NNs.tasks.regular import D_n
+from selective_dense_state_space_model.tasks.regular import cycle_navigation
+from selective_dense_state_space_model.tasks.regular import even_pairs
+from selective_dense_state_space_model.tasks.regular import modular_arithmetic
+from selective_dense_state_space_model.tasks.regular import parity_check
+from selective_dense_state_space_model.tasks.regular import C_2_n
+from selective_dense_state_space_model.tasks.regular import A5
+from selective_dense_state_space_model.tasks.regular import D_n
 
 MODEL_BUILDERS = {
     'rnn':
@@ -38,7 +37,7 @@ MODEL_BUILDERS = {
     'lstm':
         lstm.LSTM,
     'SDSSM':
-        SDSSM.LSRNN,
+        SDSSM.SDSSM,
     'SDSSM_nonlinear':
         SDSSM_nonlinear.LSRNN,
     'complex_diagonal_with_B_linear':

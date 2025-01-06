@@ -12,7 +12,7 @@ import numpy as np
 
 device = 'cuda' if t.cuda.is_available() else 'cpu'
 
-class LSRNNBlock(nn.Module):
+class SDSSMBlock(nn.Module):
 
     def __init__(self,
                  embed_size: int,
@@ -21,7 +21,7 @@ class LSRNNBlock(nn.Module):
                  Lp_norm: float = 1.2,
                  **kwargs):
         
-        super(LSRNNBlock, self).__init__()
+        super(SDSSMBlock, self).__init__()
 
         self.hidden_size = hidden_size
         self.Lp_norm = Lp_norm
@@ -30,7 +30,6 @@ class LSRNNBlock(nn.Module):
         self.A_selector = nn.Linear(embed_size, num_A)
         self.B = nn.Linear(embed_size, hidden_size, bias = False)
 
-        # Xavier initialization
         initializer = t.rand(hidden_size, hidden_size, num_A)*(2*np.sqrt(6))/(np.sqrt(2*hidden_size)) - np.sqrt(6)/(np.sqrt(2*hidden_size))
 
         self.A_dict = nn.Parameter(initializer)        
@@ -69,8 +68,6 @@ class LSRNN(nn.Module):
                  mlp_size: int = None,
                  num_transition_matrices: int = 2,
                  return_all_outputs: bool = False,
-                 mlp_multiplier: int = 1,
-                 debug: bool = False,
                  Lp_norm: float = 1.2,
                  **kwargs):
         
@@ -81,17 +78,15 @@ class LSRNN(nn.Module):
 
         self.return_all_outputs = return_all_outputs
 
-        self.block = LSRNNBlock(embed_size=input_size,
+        self.block = SDSSMBlock(embed_size=input_size,
                                 hidden_size=state_size,
                                 num_A=num_transition_matrices,
-                                mlp_multiplier=mlp_multiplier,
                                 Lp_norm=Lp_norm) 
         
         self.norm = nn.LayerNorm(state_size)
 
         self.readout = nn.Sequential(nn.Linear(state_size, mlp_size), nn.ReLU(), nn.Linear(mlp_size, output_size))
 
-        self.debug = debug
 
     def forward(self, x: t.Tensor) -> t.Tensor:
 
@@ -104,7 +99,4 @@ class LSRNN(nn.Module):
         if not self.return_all_outputs:
             output = output[:, -1, :]
         
-        if self.debug:
-            return rnn_out, rnn_out_norm, output
-        else:
-            return output
+        return output

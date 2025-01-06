@@ -8,7 +8,7 @@
 import torch as t
 import torch.nn.functional as F
 
-from State_Tracking_With_NNs.tasks import task
+from selective_dense_state_space_model.tasks import task
 
 class CycleNavigation(task.GeneralizationTask):
 
@@ -16,7 +16,6 @@ class CycleNavigation(task.GeneralizationTask):
   def _cycle_length(self) -> int:
     return 5
 
-  # @functools.partial(jax.jit, static_argnums=(0, 2, 3))
   def sample_batch(self, batch_size: int,
                    length: int) -> task.Batch:
     """Returns a batch of strings and the expected class."""

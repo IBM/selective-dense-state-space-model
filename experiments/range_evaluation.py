@@ -16,8 +16,8 @@ import tqdm
 import torch.nn as nn
 import torch as t
 
-from State_Tracking_With_NNs.experiments import utils
-from State_Tracking_With_NNs.tasks import task as task_lib
+from selective_dense_state_space_model.experiments import utils
+from selective_dense_state_space_model.tasks import task as task_lib
 
 from torch.utils.tensorboard import SummaryWriter
 
@@ -30,15 +30,11 @@ device = 'cuda' if t.cuda.is_available() else 'cpu'
 @dataclasses.dataclass
 class EvaluationParams:
   """The parameters used for range evaluation of networks."""
-  #model: hk.Transformed
-  #params: hk.Params
   model: nn.Module
   task: task_lib.GeneralizationTask
 
   single_output: bool
 
-  #accuracy_fn: Callable[[jnp.ndarray, jnp.ndarray], jnp.ndarray]
-  #sample_batch: Callable[[jnp.ndarray, int, int], _Batch]
   accuracy_fn: Callable[[t.Tensor, t.Tensor], t.Tensor]
   sample_batch: Callable[[t.Tensor, int, int], _Batch]
 
@@ -51,8 +47,6 @@ class EvaluationParams:
   use_query_token: bool = False
 
   computation_steps_mult: int = 0
-
-  val_length: int = 500
 
 
 def range_evaluation(
@@ -120,7 +114,7 @@ def range_evaluation(
         'accuracy': np.mean(sub_accuracies),
     }
 
-    writer.add_scalar(f"Accuracy/oodlen_val_{eval_params.val_length}", np.mean(sub_accuracies), length)
+    writer.add_scalar(f"Accuracy/OOD", np.mean(sub_accuracies), length)
 
     logging.info(log_data)
     results.append(log_data)

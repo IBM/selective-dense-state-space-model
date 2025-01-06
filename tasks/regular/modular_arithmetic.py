@@ -14,7 +14,7 @@ import torch as t
 import torch.nn.functional as F
 import numpy as np
 
-from State_Tracking_With_NNs.tasks import task
+from selective_dense_state_space_model.tasks import task
 
 # Public as this may be used to encode/decode strings of numbers/symbols.
 OP_BY_CHARACTER = {'+': 0, '-': 1, '*': 2, '_': 3}

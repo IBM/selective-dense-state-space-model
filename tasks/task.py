@@ -38,7 +38,6 @@ class GeneralizationTask(abc.ABC):
     """Returns the accuracy between an output and a target."""
     return (t.argmax(output, axis=-1) == t.argmax(target, axis=-1))
 
-  #def accuracy_mask(self, target: chex.Array) -> chex.Array:
   def accuracy_mask(self, target: t.Tensor) -> t.Tensor:
     """Returns a mask to compute the accuracies, to remove the superfluous ones."""
     # Target is a shape of shape (B, T, C) where C is the number of classes.

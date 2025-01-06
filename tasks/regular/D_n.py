@@ -7,10 +7,8 @@
 
 
 import torch as t
-import numpy as np
 import torch.nn.functional as F
-import sys
-from State_Tracking_With_NNs.tasks import task
+from selective_dense_state_space_model.tasks import task
 
 class DihedronNavigation(task.GeneralizationTask):
 
