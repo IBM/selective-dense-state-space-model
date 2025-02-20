@@ -82,14 +82,11 @@ This repository is heavily inspired by the [Neural Networks and the Chomsky Hier
 
 If you use the work released here for your research, please cite this paper:
 ```
-@misc{terzic2024sdssm,
+@inproceedings{terzic2025sdssm,
       title={On the Expressiveness and Length Generalization of Selective State-Space Models on Regular Languages}, 
       author={Aleksandar Terzić and Michael Hersche and Giacomo Camposampiero and Thomas Hofmann and Abu Sebastian and Abbas Rahimi},
-      year={2024},
-      eprint={2412.19350},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2412.19350}, 
+      year={2025},
+      booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence}
 }
 ```
 
